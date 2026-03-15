@@ -1,16 +1,20 @@
-# Sentiment Analysis of M-Tix (Cinema 21) App Reviews
+# M-Tix Sentiment Analysis
 
-Individual Assignment - Pemrosesan Bahasa Alami (PBA)
-Ida Bagus Adhiraga Yudhistira - 5026231120
-Information Systems, Sepuluh Nopember Institute of Technology
+End-to-end NLP pipeline on **19,000+ user reviews** of the [M-Tix](https://play.google.com/store/apps/details?id=lds.cinema21&hl=id) app (Cinema 21 ticketing) from Google Play Store. All text processing uses Indonesian language tools.
+
+> Scraping → Preprocessing → BoW / N-Grams → TF-IDF → POS Tagging
 
 ---
 
-## Overview
+## Notebooks
 
-This project performs sentiment analysis on user reviews of the **M-Tix** app (Cinema 21) scraped from Google Play Store. The analysis covers the full NLP pipeline from data collection to feature extraction.
-
-**App:** [M-Tix - Cinema 21](https://play.google.com/store/apps/details?id=lds.cinema21&hl=id)
+| # | Notebook | What it does |
+|---|----------|--------------|
+| 01 | `01_scraping_tokenization.ipynb` | Scrape all reviews, tokenization, lowercasing, punctuation removal |
+| 02 | `02_preprocessing_eda.ipynb` | Remove stopwords, stem, label sentiment, visualize distributions |
+| 03 | `03_bow_ngrams.ipynb` | Bag of Words, bigram/trigram analysis |
+| 04 | `04_tfidf.ipynb` | TF-IDF extraction, top words per sentiment |
+| 05 | `05_pos_tagging.ipynb` | POS tagging, POS distribution across reviews |
 
 ---
 
@@ -20,9 +24,10 @@ This project performs sentiment analysis on user reviews of the **M-Tix** app (C
 pba-task-1a-individual/
 ├── data/
 │   ├── raw/
-│   │   └── mtix_raw.csv           # Raw scraped reviews
+│   │   ├── mtix_raw.csv
+│   │   └── mtix_tokenized.csv
 │   └── preprocessed/
-│       └── mtix_preprocessed.csv  # Cleaned and labeled data
+│       └── mtix_preprocessed.csv
 ├── notebooks/
 │   ├── 01_scraping_tokenization.ipynb
 │   ├── 02_preprocessing_eda.ipynb
@@ -35,49 +40,45 @@ pba-task-1a-individual/
 
 ---
 
-## Notebooks
+## Quick Start
 
-| # | Notebook | Description |
-|---|----------|-------------|
-| 01 | `01_scraping_tokenization.ipynb` | Scrape reviews from Google Play Store, tokenization, lowercasing, punctuation removal |
-| 02 | `02_preprocessing_eda.ipynb` | Stopword removal, stemming, labeling, EDA with pie chart and bar chart |
-| 03 | `03_bow_ngrams.ipynb` | Bag of Words and N-Grams feature extraction |
-| 04 | `04_tfidf.ipynb` | TF-IDF feature extraction |
-| 05 | `05_pos_tagging.ipynb` | Part-of-Speech tagging |
+**Colab (recommended):** Open any notebook and run all cells from top to bottom.
 
----
+**Local:**
 
-## Dataset
+```bash
+git clone https://github.com/adhiraga/pba-task-1a-individual.git
+cd pba-task-1a-individual
+pip install -r requirements.txt
+```
 
-- **Source:** Google Play Store reviews for M-Tix (id: `lds.cinema21`)
-- **Languages scraped:** Indonesian (`id`) and English (`en`)
-- **Total reviews:** ~19,000+
-- **Labels:** Positive (score ≥ 4), Negative (score ≤ 2), Neutral excluded
+> Run notebooks in order: 01 → 02 → 03 → 04 → 05. Notebooks 03–05 require `mtix_preprocessed.csv`.
 
 ---
 
-## Requirements
+## Tech Stack
 
-See `requirements.txt` for full dependencies. Main libraries used:
-
-- `google-play-scraper` - Scraping reviews
-- `PySastrawi` - Indonesian stemmer and stopword remover
-- `nltk` - Tokenization
-- `pandas`, `matplotlib`, `seaborn` - Data processing and visualization
-- `scikit-learn` - Feature extraction (BoW, TF-IDF)
-
----
-
-## How to Run
-
-1. Open any notebook in [Google Colab](https://colab.research.google.com/)
-2. Run all cells from top to bottom
-3. Notebooks 02–05 require `mtix_preprocessed.csv` from `data/preprocessed/`
+| Category | Libraries |
+|----------|-----------|
+| Scraping | google-play-scraper |
+| NLP | NLTK, PySastrawi |
+| Feature Extraction | scikit-learn (CountVectorizer, TF-IDF) |
+| Data | Pandas, NumPy |
+| Viz | Matplotlib, Seaborn |
 
 ---
 
-## Results
+## App Info
 
-- Sentiment distribution visualized in a **pie chart** (positive vs negative)
-- Top frequent words shown in a **horizontal bar chart**
-- Feature matrices generated using BoW, N-Grams, and TF-IDF
+| | |
+|---|---|
+| **App** | M-Tix - Cinema 21 |
+| **App ID** | `lds.cinema21` |
+| **Reviews** | 19,000+ (Indonesian + English) |
+| **Rating split** | Score ≥ 4 → Positive, Score ≤ 2 → Negative, Score = 3 → excluded |
+
+---
+
+## Author
+
+Ida Bagus Adhiraga Yudhistira — 5026231120 · Information Systems · Sepuluh Nopember Institute of Technology
