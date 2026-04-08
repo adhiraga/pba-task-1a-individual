@@ -27,11 +27,15 @@ pba-task-1a-individual/
 │   │   └── mtix_tokenized.csv    # Tokenized data
 │   └── preprocessed/
 │       └── mtix_preprocessed.csv # Cleaned, stemmed, and labeled data
-├── notebooks/
+├── notebooks/                    # Main notebooks (full pipeline)
 │   ├── 01_scraping_tokenization.ipynb
 │   ├── 02_preprocessing_eda.ipynb
 │   ├── 03_bow_ngrams.ipynb
 │   ├── 04_tfidf.ipynb
+│   └── 05_pos_tagging.ipynb
+├── Week 2 & 3/                   # Weekly task submissions
+├── Week 4/                       # Weekly task submissions
+├── Week 5/                       # Weekly task submissions
 │   └── 05_pos_tagging.ipynb
 ├── README.md
 └── requirements.txt
@@ -83,5 +87,5 @@ Run notebooks in order: `01` → `02` → `03` → `04` → `05`. Notebooks `03`
 
 ## Author
 
-**Ida Bagus Adhiraga Yudhistira** — 5026231120
+**Ida Bagus Adhiraga Yudhistira** — 5026231120  
 Information Systems · Institut Teknologi Sepuluh Nopember
